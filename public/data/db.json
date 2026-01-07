@@ -1,0 +1,80 @@
+{
+  "siteContent": {
+    "heroTagline": "Hecho a mano con amor",
+    "heroTitle": "Amigurumis Hechos a Mano",
+    "heroSubtitle": "Con amor y lana 100% hipoalergénica. Cada pieza es única, tejida con dedicación para crear compañeros especiales que duran toda la vida.",
+    "catalogTitle": "Nuestros Amigurumis",
+    "catalogSubtitle": "Cada uno tejido con amor y atención al detalle. Encuentra tu compañero perfecto.",
+    "whyChooseUsTitle": "¿Por qué elegirnos?",
+    "whyChooseUsSubtitle": "Nos apasiona crear compañeros especiales que traen alegría a cada hogar.",
+    "aboutTitle": "Nuestra Historia",
+    "aboutText": "Todo comenzó en 2018 con un pequeño conejo tejido para mi sobrina. Lo que empezó como un hobby se convirtió en una pasión que hoy compartimos con cientos de familias en todo México.\n\nCada amigurumi que sale de nuestras manos lleva consigo horas de dedicación, amor y la promesa de convertirse en el compañero favorito de alguien especial. Usamos solo materiales de la más alta calidad porque sabemos que estos pequeños amigos serán abrazados, queridos y atesorados por años.\n\nCreemos que los juguetes hechos a mano tienen un alma especial que los hace únicos e irreemplazables.",
+    "galleryTitle": "Momentos Especiales",
+    "gallerySubtitle": "Nuestros amigurumis creando recuerdos inolvidables en hogares de todo México.",
+    "contactTitle": "Contáctanos",
+    "contactSubtitle": "¿Tienes preguntas o quieres un diseño personalizado? ¡Escríbenos!",
+    "footerDescription": "Creamos compañeros tejidos a mano con amor y dedicación. Cada amigurumi es único y especial, hecho para durar toda la vida.",
+    "footerPhone": "+52 (555) 123-4567",
+    "footerEmail": "hola@amigurumis.mx"
+  },
+  "products": [
+    {
+      "id": "1",
+      "name": "Dino Tejido",
+      "price": 350,
+      "stock": "available",
+      "image": "/placeholder.svg?height=300&width=300"
+    },
+    {
+      "id": "2",
+      "name": "Conejo Pastel",
+      "price": 280,
+      "stock": "available",
+      "image": "/placeholder.svg?height=300&width=300"
+    },
+    {
+      "id": "3",
+      "name": "Unicornio Rosa",
+      "price": 420,
+      "stock": "low",
+      "image": "/placeholder.svg?height=300&width=300"
+    },
+    {
+      "id": "4",
+      "name": "Elefante Azul",
+      "price": 380,
+      "stock": "available",
+      "image": "/placeholder.svg?height=300&width=300"
+    },
+    {
+      "id": "5",
+      "name": "Gatito Lila",
+      "price": 300,
+      "stock": "available",
+      "image": "/placeholder.svg?height=300&width=300"
+    },
+    { "id": "6", "name": "Panda Baby", "price": 450, "stock": "low", "image": "/placeholder.svg?height=300&width=300" },
+    {
+      "id": "7",
+      "name": "Tortuga Marina",
+      "price": 320,
+      "stock": "available",
+      "image": "/placeholder.svg?height=300&width=300"
+    },
+    {
+      "id": "8",
+      "name": "Reno Navideño",
+      "price": 480,
+      "stock": "available",
+      "image": "/placeholder.svg?height=300&width=300"
+    }
+  ],
+  "galleryImages": [
+    { "id": "1", "url": "/placeholder.svg?height=400&width=400", "alt": "Niño feliz con su amigurumi", "order": 0 },
+    { "id": "2", "url": "/placeholder.svg?height=300&width=400", "alt": "Decoración de cuarto de bebé", "order": 1 },
+    { "id": "3", "url": "/placeholder.svg?height=400&width=400", "alt": "Regalo especial de amigurumi", "order": 2 },
+    { "id": "4", "url": "/placeholder.svg?height=300&width=400", "alt": "Colección de amigurumis", "order": 3 },
+    { "id": "5", "url": "/placeholder.svg?height=400&width=400", "alt": "Niño jugando con amigurumis", "order": 4 },
+    { "id": "6", "url": "/placeholder.svg?height=300&width=400", "alt": "Bebé con su conejito tejido", "order": 5 }
+  ]
+}
