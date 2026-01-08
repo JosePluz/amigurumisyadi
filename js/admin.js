@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const GITHUB_CONFIG = {
         owner: 'JosePluz',
         repo: 'amigurumisyadi',
-        token: '{{ secrets.ADMIN_TOKEN }}', // injected by Render
         dbPath: 'data/db.json'
     };
 
@@ -17,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.getElementById('login-btn');
     const logoutBtn = document.getElementById('logout-btn');
     const passwordInput = document.getElementById('password');
+    const tokenInput = document.getElementById('github-token');
     const authError = document.getElementById('auth-error');
 
     // Revisar sessionStorage para mantener la sesión
@@ -25,18 +25,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loginBtn.addEventListener('click', () => {
-        // En un caso real, la contraseña no estaría hardcodeada aquí.
-        if (passwordInput.value === 'yadi123') {
+        const password = passwordInput.value;
+        const token = tokenInput.value;
+
+        // Validación simple
+        if (password === 'yadi123' && token && token.startsWith('ghp_')) {
             sessionStorage.setItem('isAdminAuthenticated', 'true');
+            sessionStorage.setItem('githubToken', token);
             showAdminPanel();
         } else {
-            authError.textContent = 'Contraseña incorrecta.';
-            passwordInput.value = '';
+            authError.textContent = 'Contraseña o Token de GitHub inválido.';
+            if (!token || !token.startsWith('ghp_')) {
+                authError.textContent += ' Asegúrate de que el token empiece con "ghp_".';
+            }
         }
     });
 
     logoutBtn.addEventListener('click', () => {
-        sessionStorage.removeItem('isAdminAuthenticated');
+        sessionStorage.clear();
         location.reload();
     });
 
@@ -61,33 +67,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- LÓGICA DE LA API DE GITHUB ---
+    function getAuthHeaders() {
+        const token = sessionStorage.getItem('githubToken');
+        if (!token) {
+            console.error("Token de GitHub no encontrado en la sesión.");
+            // Forzar cierre de sesión si el token se pierde
+            logoutBtn.click();
+            return null;
+        }
+        return {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+        };
+    }
+    
     async function getDbFile() {
         const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.dbPath}`;
+        const headers = getAuthHeaders();
+        if (!headers) return null;
+
         try {
-            const response = await fetch(url, {
-                headers: { 'Authorization': `token ${GITHUB_CONFIG.token}` }
-            });
+            const response = await fetch(url, { headers });
             if (response.status === 404) {
+                console.log("El archivo db.json no existe. Se usará la plantilla por defecto.");
                 return { sha: null, content: DEFAULT_DB_DATA };
             }
             if (!response.ok) {
-                throw new Error(`Error de GitHub: ${response.statusText}`);
+                throw new Error(`Error de GitHub: ${response.status} ${response.statusText}`);
             }
             const data = await response.json();
             const content = JSON.parse(atob(data.content));
             return { sha: data.sha, content };
         } catch (error) {
             console.error('Error al obtener db.json:', error);
+            document.getElementById('products-editor').innerHTML = `<p class="error">Error al cargar datos desde GitHub. Verifica tu token y los permisos del repositorio. Detalles: ${error.message}</p>`;
             return null;
         }
     }
 
     async function updateDbFile(content, sha) {
         const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.dbPath}`;
+        const headers = getAuthHeaders();
+        if (!headers) return null;
+
         const newContentBase64 = btoa(JSON.stringify(content, null, 2));
 
         const body = {
-            message: 'chore: update content',
+            message: 'chore: update content from admin panel',
             content: newContentBase64,
             branch: 'main'
         };
@@ -98,10 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch(url, {
                 method: 'PUT',
-                headers: {
-                    'Authorization': `token ${GITHUB_CONFIG.token}`,
-                    'Content-Type': 'application/json'
-                },
+                headers: { ...headers, 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             });
 
@@ -112,10 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return await response.json();
         } catch (error) {
             console.error('Error al actualizar db.json:', error);
+            publishStatus.textContent = `Error al publicar: ${error.message}`;
+            publishStatus.className = 'error';
             return null;
         }
     }
-
 
     // --- CARGA Y GESTIÓN DE DATOS ---
     let currentDb = { sha: null, content: DEFAULT_DB_DATA };
@@ -126,9 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentDb = dbFile;
             renderProductsEditor(currentDb.content.products);
             renderMessages(currentDb.content.messages);
-        } else {
-            // Manejar error de carga inicial
-            document.getElementById('products-editor').innerHTML = '<p class="error">No se pudo cargar la base de datos.</p>';
         }
     }
 
@@ -139,20 +160,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderProductsEditor(products) {
         if (!products || products.length === 0) {
-            productsEditor.innerHTML = '<p>No hay productos para mostrar. Agrega el primero en el archivo `data/db.json`.</p>';
+            productsEditor.innerHTML = '<p>Aún no hay productos. Puedes añadirlos manualmente al archivo `data/db.json` para empezar.</p>';
             return;
         }
         productsEditor.innerHTML = products.map((p, index) => `
             <div class="product-item" data-index="${index}">
-                <h4>Producto ID: ${p.id}</h4>
-                <label>Nombre:</label>
-                <input type="text" class="product-name" value="${p.name}">
-                <label>Precio:</label>
-                <input type="number" step="0.01" class="product-price" value="${p.price}">
-                <label>Descripción:</label>
-                <textarea class="product-description">${p.description}</textarea>
-                <label>URL de Imagen:</label>
-                <input type="text" class="product-imageUrl" value="${p.imageUrl}">
+                <h4>Producto: ${p.name} (ID: ${p.id})</h4>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <input type="text" class="product-name" value="${p.name}">
+                    </div>
+                    <div class="form-group">
+                        <label>Precio (€):</label>
+                        <input type="number" step="0.01" class="product-price" value="${p.price}">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Descripción:</label>
+                        <textarea class="product-description">${p.description}</textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>URL de Imagen (en carpeta 'public'):</label>
+                        <input type="text" class="product-imageUrl" value="${p.imageUrl}">
+                    </div>
+                </div>
             </div>
         `).join('');
     }
@@ -161,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
         publishStatus.textContent = 'Guardando y publicando...';
         publishStatus.className = '';
 
-        // Recolectar datos del editor
         const updatedProducts = [];
         document.querySelectorAll('#products-editor .product-item').forEach(item => {
             const product = currentDb.content.products[item.dataset.index];
@@ -174,22 +204,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const newDbContent = { ...currentDb.content, products: updatedProducts };
         
-        // Si no hay SHA, significa que el archivo no existe y se creará
-        if (currentDb.sha === null) {
-            console.log("El archivo data/db.json no existe. Se creará antes del commit.");
-        }
-
         const result = await updateDbFile(newDbContent, currentDb.sha);
 
         if (result) {
             publishStatus.textContent = '¡Cambios guardados y publicados con éxito!';
             publishStatus.className = 'success';
-            // Actualizar el SHA local para el próximo guardado
             currentDb.sha = result.content.sha;
             currentDb.content = newDbContent;
-        } else {
-            publishStatus.textContent = 'Error al publicar los cambios.';
-            publishStatus.className = 'error';
+
+            setTimeout(() => { publishStatus.textContent = ''; }, 5000);
         }
     });
 

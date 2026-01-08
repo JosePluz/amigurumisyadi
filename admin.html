@@ -9,10 +9,15 @@
 </head>
 <body>
     <div id="auth-screen">
-        <h2>Acceso de Administrador</h2>
-        <input type="password" id="password" placeholder="Contraseña">
-        <button id="login-btn">Entrar</button>
-        <p id="auth-error" class="error"></p>
+        <div class="login-box">
+            <h2>Acceso de Administrador</h2>
+            <p>Ingresa la contraseña y tu token de GitHub para gestionar el contenido.</p>
+            <input type="password" id="password" placeholder="Contraseña de administrador">
+            <input type="password" id="github-token" placeholder="GitHub Personal Access Token (ghp_...)">
+            <button id="login-btn">Entrar</button>
+            <p id="auth-error" class="error"></p>
+            <a href="https://github.com/settings/tokens/new?scopes=repo&description=AmigurumisYadi%20Admin" target="_blank" class="token-link">¿Necesitas un token? Genera uno aquí.</a>
+        </div>
     </div>
 
     <div id="admin-panel" style="display: none;">
@@ -32,8 +37,10 @@
                 <div id="products-editor">
                     <!-- Los campos de productos se generarán aquí -->
                 </div>
-                <button id="save-publish-btn" class="btn-publish">Guardar y Publicar Cambios</button>
-                <p id="publish-status"></p>
+                <div class="publish-container">
+                    <button id="save-publish-btn" class="btn-publish">Guardar y Publicar Cambios</button>
+                    <p id="publish-status"></p>
+                </div>
             </div>
 
             <div id="messages-tab" class="tab-content">
