@@ -28,7 +28,7 @@ Un sitio web para vender amigurumis (peluches tejidos a mano) con panel de admin
 
 Asegúrate de que tu `next.config.mjs` incluya:
 
-```javascript
+\`\`\`javascript
 const nextConfig = {
   output: 'export',
   images: {
@@ -37,7 +37,7 @@ const nextConfig = {
 }
 
 export default nextConfig
-```
+\`\`\`
 
 ## Panel de Administración
 
@@ -85,7 +85,7 @@ Para subir imágenes reales en lugar de placeholders:
 
 ## Estructura del Proyecto
 
-```
+\`\`\`
 ├── app/
 │   ├── admin/
 │   │   └── page.tsx          # Panel de administración
@@ -108,7 +108,7 @@ Para subir imágenes reales en lugar de placeholders:
 └── public/
     └── data/
         └── db.json           # Base de datos JSON
-```
+\`\`\`
 
 ## Tecnologías
 
