@@ -19,10 +19,17 @@
   },
   "products": [
     {
-      "id": "1",
-      "name": "Dino Tejido",
-      "price": 350,
+      "id": "2",
+      "name": "Conejo Pastel",
+      "price": 280,
       "stock": "available",
+      "image": "/placeholder.svg?height=300&width=300"
+    },
+    {
+      "id": "3",
+      "name": "Unicornio Rosa",
+      "price": 420,
+      "stock": "low",
       "image": "/placeholder.svg?height=300&width=300"
     },
     {
@@ -47,11 +54,11 @@
       "image": "/placeholder.svg?height=300&width=300"
     },
     {
-      "id": "7",
-      "name": "Tortuga Marina",
-      "price": 320,
+      "id": "1767834592384",
+      "name": "Nuevo Producto",
+      "price": 0,
       "stock": "available",
-      "image": "/placeholder.svg?height=300&width=300"
+      "image": "<a href=\"https://ibb.co/4wWkmSRT\"><img src=\"https://i.ibb.co/4wWkmSRT/paco.webp\" alt=\"paco\" border=\"0\"></a>"
     }
   ],
   "galleryImages": [
