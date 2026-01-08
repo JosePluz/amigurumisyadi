@@ -1,0 +1,61 @@
+{
+  "products": [
+    {
+      "id": "prod_001",
+      "name": "Conejo soñador",
+      "price": 25.99,
+      "description": "Un adorable conejo de ganchillo con un gorro de dormir, perfecto para acompañar los sueños.",
+      "imageUrl": "cute-amigurumi-moment-pastel.jpg"
+    },
+    {
+      "id": "prod_002",
+      "name": "Osito cariñoso",
+      "price": 29.99,
+      "description": "Este osito de peluche hecho a mano está listo para dar abrazos sin fin.",
+      "imageUrl": "cute-knitted-amigurumi-toy-pastel.jpg"
+    },
+    {
+      "id": "prod_003",
+      "name": "Zorro astuto",
+      "price": 27.50,
+      "description": "Un zorro de colores vivos, con una cola esponjosa y una mirada curiosa.",
+      "imageUrl": "cute-colorful-hand-knitted-amigurumi-stuffed-anima.jpg"
+    },
+    {
+      "id": "prod_004",
+      "name": "Elefante elegante",
+      "price": 32.00,
+      "description": "Un elefante con grandes orejas y una trompa juguetona, tejido con lana suave.",
+      "imageUrl": "finished-amigurumi-collection-cute-stuffed-animals.jpg"
+    },
+    {
+      "id": "prod_005",
+      "name": "Pulpo amigable",
+      "price": 24.00,
+      "description": "Con sus ocho tentáculos, este pulpo es el compañero de juegos ideal.",
+      "imageUrl": "placeholder.jpg"
+    },
+    {
+      "id": "prod_006",
+      "name": "Dinosaurio diminuto",
+      "price": 22.50,
+      "description": "Un pequeño T-Rex que es más tierno que temible, ideal para los pequeños aventureros.",
+      "imageUrl": "placeholder.jpg"
+    },
+    {
+      "id": "prod_007",
+      "name": "Gato sonriente",
+      "price": 26.00,
+      "description": "Un gatito con una sonrisa permanente que alegrará cualquier habitación.",
+      "imageUrl": "placeholder.jpg"
+    },
+    {
+      "id": "prod_008",
+      "name": "Llama de los Andes",
+      "price": 30.00,
+      "description": "Una llama colorida con una pequeña manta en su lomo, inspirada en los textiles andinos.",
+      "imageUrl": "placeholder.jpg"
+    }
+  ],
+  "messages": []
+}

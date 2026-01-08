@@ -1,0 +1,197 @@
+:root {
+    --primary-color: #FFB6C1;
+    --secondary-color: #B8E0D2;
+    --background-color: #f4f7f6;
+    --text-color: #333;
+    --white: #fff;
+    --error-color: #d9534f;
+    --success-color: #5cb85c;
+    --border-radius: 5px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Auth Screen */
+#auth-screen {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 40px;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+#auth-screen h2 {
+    margin-bottom: 20px;
+}
+
+#auth-screen input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+}
+
+#auth-screen button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#auth-error {
+    color: var(--error-color);
+    margin-top: 10px;
+    height: 1em;
+}
+
+/* Admin Panel */
+#admin-panel header {
+    background-color: var(--white);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#admin-panel header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+#logout-btn {
+    padding: 8px 15px;
+    background: #6c757d;
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+main {
+    padding: 20px;
+}
+
+.tabs {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.tab-link {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-link.active {
+    border-bottom-color: var(--primary-color);
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Products Editor */
+#products-editor .product-item {
+    background: var(--white);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#products-editor .product-item label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+#products-editor .product-item input,
+#products-editor .product-item textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+}
+
+#products-editor .product-item textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.btn-publish {
+    background-color: var(--success-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+.btn-clear {
+    background-color: var(--error-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+#publish-status {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#publish-status.success {
+    color: var(--success-color);
+}
+
+#publish-status.error {
+    color: var(--error-color);
+}
+
+/* Messages List */
+#messages-list .message-item {
+    background: var(--white);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: var(--border-radius);
+    border-left: 5px solid var(--secondary-color);
+}
+
+#messages-list .message-item p {
+    margin: 0 0 5px 0;
+}
+
+#messages-list .message-item .message-meta {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9em;
+}
+
+#messages-list .no-messages {
+    color: #888;
+}

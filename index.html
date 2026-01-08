@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigurumis Yadi - Hechos con Amor</title>
+    <meta name="description" content="Descubre la magia de los amigurumis hechos a mano por Yadi. Muñecos de ganchillo únicos, creados con amor y dedicación en cada puntada.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="public/placeholder-logo.png" alt="Amigurumis Yadi Logo" loading="lazy">
+                <span>Amigurumis Yadi</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#about">Sobre Mí</a></li>
+                    <li><a href="#products">Productos</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h1>Amigurumis Hechos con Amor</h1>
+                <p>Cada muñeco es una pieza única de arte, tejida a mano con la máxima dedicación.</p>
+                <a href="#products" class="btn btn-primary">Ver creaciones</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <img src="public/hands-knitting-crochet-yarn-pastel-colors-crafting.jpg" alt="Manos tejiendo un amigurumi" loading="lazy">
+                    <div class="about-text">
+                        <h2>Sobre Mí</h2>
+                        <p>Hola, soy Yadi. Desde pequeña, el ganchillo ha sido mi pasión. En cada amigurumi que creo, pongo un trocito de mi corazón. Mi objetivo es llevar alegría a través de estos pequeños compañeros de lana, asegurando que cada uno sea especial y esté lleno de personalidad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="products" class="products-section">
+            <div class="container">
+                <h2>Mis Creaciones</h2>
+                <div id="products-grid" class="products-grid">
+                    <!-- Los productos se cargarán aquí desde db.json -->
+                </div>
+            </div>
+        </section>
+
+        <section id="why-choose-us" class="why-choose-us-section">
+            <div class="container">
+                <h2>¿Por Qué Elegir Mis Amigurumis?</h2>
+                <div class="features">
+                    <div class="feature-item">
+                        <img src="public/generic-placeholder-icon.png" alt="Icono Calidad" loading="lazy">
+                        <h3>100% Hecho a Mano</h3>
+                        <p>Cada muñeco es tejido cuidadosamente a ganchillo, garantizando un acabado único y personal.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="public/generic-placeholder-icon.png" alt="Icono Materiales" loading="lazy">
+                        <h3>Materiales de Calidad</h3>
+                        <p>Utilizo solo lanas suaves e hipoalergénicas, seguras para todas las edades.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="public/generic-placeholder-icon.png" alt="Icono Diseño" loading="lazy">
+                        <h3>Diseños con Alma</h3>
+                        <p>Mis creaciones no son solo juguetes, son compañeros con una historia que contar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Ponte en Contacto</h2>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    <p id="form-response" class="form-response"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Amigurumis Yadi. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

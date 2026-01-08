@@ -1,120 +1,35 @@
-# Amigurumis Artesanales - Sitio Web
+# Amigurumis Yadi
 
-Un sitio web para vender amigurumis (peluches tejidos a mano) con panel de administración integrado.
-
-## Despliegue en Render
-
-### 1. Preparación del Repositorio
-
-1. Crea un repositorio en GitHub con todo el código
-2. Asegúrate de que el archivo `public/data/db.json` esté incluido
-
-### 2. Configuración en Render
-
-1. Ve a [render.com](https://render.com) y crea una cuenta si no tienes una
-2. Conecta tu cuenta de GitHub
-3. Clic en "New" → "Static Site"
-4. Selecciona tu repositorio
-5. Configura:
-   - **Name**: amigurumi-shop (o el nombre que prefieras)
-   - **Branch**: main
-   - **Build Command**: `npm install && npm run build`
-   - **Publish Directory**: `out`
-6. En "Environment", agrega la variable:
-   - `NODE_ENV`: `production`
-7. Clic en "Create Static Site"
-
-### 3. Configuración de next.config.mjs para Static Export
-
-Asegúrate de que tu `next.config.mjs` incluya:
-
-\`\`\`javascript
-const nextConfig = {
-  output: 'export',
-  images: {
-    unoptimized: true,
-  },
-}
-
-export default nextConfig
-\`\`\`
-
-## Panel de Administración
-
-### Acceso
-
-1. Ve a `/admin` en tu sitio
-2. Ingresa la contraseña: `Jose_Pl00`
-
-### Funciones
-
-- **Productos**: Agregar, editar, eliminar productos con imágenes
-- **Contenido**: Editar todos los textos del sitio (hero, catálogo, historia, contacto, footer)
-- **Galería**: Agregar, reordenar y eliminar imágenes de la galería
-
-### Publicar Cambios
-
-Al hacer clic en "Guardar y Publicar", se te pedirá:
-
-1. **GitHub Personal Access Token (PAT)**: Se guarda en sessionStorage para sesiones futuras
-2. **Nombre del repositorio**: formato `usuario/nombre-repo`
-
-Los cambios se guardan directamente en el repositorio vía GitHub API, y Render redesplega automáticamente (30-60 segundos).
-
-## Cómo obtener un GitHub PAT
-
-1. Ve a GitHub → Settings → Developer settings
-2. Personal access tokens → Tokens (classic)
-3. Generate new token (classic)
-4. Selecciona scope: `repo` (acceso completo)
-5. Genera y copia el token
-
-## Configuración de Cloudinary (Opcional)
-
-Para subir imágenes reales en lugar de placeholders:
-
-1. Crea una cuenta en [cloudinary.com](https://cloudinary.com)
-2. Ve a Settings → Upload
-3. Scroll hasta "Upload presets"
-4. Clic en "Add upload preset"
-5. Configura:
-   - **Signing Mode**: Unsigned
-   - **Upload preset name**: `amigurumi_shop`
-6. Guarda
-7. En `components/admin-dashboard.tsx`, cambia `CLOUDINARY_CLOUD_NAME` por tu cloud name
+Este es un proyecto de sitio web estático para "Amigurumis Yadi", una tienda en línea de muñecos de ganchillo hechos a mano. El sitio está diseñado para ser desplegado en plataformas de hosting estático como Render, Vercel o Netlify.
 
 ## Estructura del Proyecto
 
-\`\`\`
-├── app/
-│   ├── admin/
-│   │   └── page.tsx          # Panel de administración
-│   ├── globals.css           # Estilos globales
-│   ├── layout.tsx            # Layout principal
-│   └── page.tsx              # Página principal
-├── components/
-│   ├── admin-dashboard.tsx   # Dashboard completo
-│   ├── admin-login.tsx       # Formulario de login
-│   ├── navbar.tsx            # Navegación
-│   ├── hero-section.tsx      # Sección hero
-│   ├── products-grid.tsx     # Grid de productos
-│   ├── about-section.tsx     # Sección historia
-│   ├── gallery-section.tsx   # Galería de imágenes
-│   ├── contact-form.tsx      # Formulario de contacto
-│   ├── footer.tsx            # Footer
-│   └── ui/                   # Componentes shadcn/ui
-├── lib/
-│   └── db-context.tsx        # Contexto de datos global
-└── public/
-    └── data/
-        └── db.json           # Base de datos JSON
-\`\`\`
+- `index.html`: La página de inicio principal del sitio.
+- `admin.html`: Un panel de administración protegido por contraseña para gestionar el contenido.
+- `data/db.json`: Un archivo JSON que actúa como una base de datos simple para los productos y mensajes.
+- `css/`: Contiene las hojas de estilo.
+  - `styles.css`: Estilos para la página principal.
+  - `admin.css`: Estilos para el panel de administración.
+- `js/`: Contiene los scripts de JavaScript.
+  - `main.js`: Lógica para la página principal (carga de productos).
+  - `admin.js`: Lógica para el panel de administración (autenticación, gestión de contenido a través de la API de GitHub).
+- `public/`: Contiene imágenes y otros activos estáticos.
 
-## Tecnologías
+## Administración de Contenido
 
-- Next.js 15 (App Router)
-- React 19
-- Tailwind CSS v4
-- shadcn/ui
-- Cloudinary (imágenes)
-- GitHub API (persistencia)
+El contenido del sitio (productos y mensajes) se gestiona a través del panel en `admin.html`.
+
+1.  **Acceso**: Navega a `admin.html` y usa la contraseña para iniciar sesión (la contraseña está hardcodeada en `js/admin.js` para este ejemplo).
+2.  **Gestión de Productos**: En la pestaña "Productos", puedes editar los detalles de cada producto. Haz clic en "Guardar y Publicar Cambios" para confirmar.
+3.  **Gestión de Mensajes**: La pestaña "Mensajes de Clientes" muestra los mensajes enviados a través del formulario de contacto. Puedes borrarlos con el botón "Limpiar Mensajes".
+
+**Importante**: El panel de administración utiliza la API de GitHub para escribir los cambios directamente en el archivo `data/db.json` del repositorio. Para que esto funcione, se ha incluido un token de acceso personal de GitHub en `js/admin.js`. **En un entorno de producción real, este token nunca debe exponerse en el lado del cliente.**
+
+## Despliegue en Render
+
+Este proyecto está optimizado para un despliegue sin problemas en Render.
+
+-   **Build Command**: `echo "Static site"`
+-   **Publish Directory**: `./`
+
+El sitio es 100% estático y no requiere un proceso de construcción. Render servirá los archivos directamente desde el directorio raíz.

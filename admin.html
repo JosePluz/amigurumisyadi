@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Amigurumis Yadi</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div id="auth-screen">
+        <h2>Acceso de Administrador</h2>
+        <input type="password" id="password" placeholder="Contraseña">
+        <button id="login-btn">Entrar</button>
+        <p id="auth-error" class="error"></p>
+    </div>
+
+    <div id="admin-panel" style="display: none;">
+        <header>
+            <h1>Panel de Administración</h1>
+            <button id="logout-btn">Cerrar Sesión</button>
+        </header>
+
+        <main>
+            <div class="tabs">
+                <button class="tab-link active" data-tab="products-tab">Productos</button>
+                <button class="tab-link" data-tab="messages-tab">Mensajes de Clientes</button>
+            </div>
+
+            <div id="products-tab" class="tab-content active">
+                <h2>Gestionar Productos</h2>
+                <div id="products-editor">
+                    <!-- Los campos de productos se generarán aquí -->
+                </div>
+                <button id="save-publish-btn" class="btn-publish">Guardar y Publicar Cambios</button>
+                <p id="publish-status"></p>
+            </div>
+
+            <div id="messages-tab" class="tab-content">
+                <h2>Mensajes de Clientes</h2>
+                <div id="messages-list">
+                    <!-- Los mensajes se mostrarán aquí -->
+                </div>
+                <button id="clear-messages-btn" class="btn-clear">Limpiar Mensajes</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
