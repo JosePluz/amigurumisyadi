@@ -26,13 +26,6 @@
       "image": "/placeholder.svg?height=300&width=300"
     },
     {
-      "id": "2",
-      "name": "Conejo Pastel",
-      "price": 280,
-      "stock": "available",
-      "image": "/placeholder.svg?height=300&width=300"
-    },
-    {
       "id": "3",
       "name": "Unicornio Rosa",
       "price": 420,
@@ -53,7 +46,13 @@
       "stock": "available",
       "image": "/placeholder.svg?height=300&width=300"
     },
-    { "id": "6", "name": "Panda Baby", "price": 450, "stock": "low", "image": "/placeholder.svg?height=300&width=300" },
+    {
+      "id": "6",
+      "name": "Panda Baby",
+      "price": 450,
+      "stock": "low",
+      "image": "/placeholder.svg?height=300&width=300"
+    },
     {
       "id": "7",
       "name": "Tortuga Marina",
@@ -70,11 +69,41 @@
     }
   ],
   "galleryImages": [
-    { "id": "1", "url": "/placeholder.svg?height=400&width=400", "alt": "Niño feliz con su amigurumi", "order": 0 },
-    { "id": "2", "url": "/placeholder.svg?height=300&width=400", "alt": "Decoración de cuarto de bebé", "order": 1 },
-    { "id": "3", "url": "/placeholder.svg?height=400&width=400", "alt": "Regalo especial de amigurumi", "order": 2 },
-    { "id": "4", "url": "/placeholder.svg?height=300&width=400", "alt": "Colección de amigurumis", "order": 3 },
-    { "id": "5", "url": "/placeholder.svg?height=400&width=400", "alt": "Niño jugando con amigurumis", "order": 4 },
-    { "id": "6", "url": "/placeholder.svg?height=300&width=400", "alt": "Bebé con su conejito tejido", "order": 5 }
+    {
+      "id": "1",
+      "url": "/placeholder.svg?height=400&width=400",
+      "alt": "Niño feliz con su amigurumi",
+      "order": 0
+    },
+    {
+      "id": "2",
+      "url": "/placeholder.svg?height=300&width=400",
+      "alt": "Decoración de cuarto de bebé",
+      "order": 1
+    },
+    {
+      "id": "3",
+      "url": "/placeholder.svg?height=400&width=400",
+      "alt": "Regalo especial de amigurumi",
+      "order": 2
+    },
+    {
+      "id": "4",
+      "url": "/placeholder.svg?height=300&width=400",
+      "alt": "Colección de amigurumis",
+      "order": 3
+    },
+    {
+      "id": "5",
+      "url": "/placeholder.svg?height=400&width=400",
+      "alt": "Niño jugando con amigurumis",
+      "order": 4
+    },
+    {
+      "id": "6",
+      "url": "/placeholder.svg?height=300&width=400",
+      "alt": "Bebé con su conejito tejido",
+      "order": 5
+    }
   ]
 }
